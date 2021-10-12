@@ -1,0 +1,133 @@
+- section: 
+  name: ホーム
+  url: /index.html
+- section: 
+  name: はじめに
+  url: /get-started/index.html
+  docs:
+    - name: Campaignトレーニングビデオ
+      url: /get-started/brightcove-campaign-training-videos.html
+    - name: ブライトコーブCampaignを始めて
+      url: /get-started/getting-started-brightcove-campaign.html
+    - name: ブライトコーブCampaignのトライアルを始めよう
+      url: /get-started/getting-started-brightcove-campaign-trial.html
+    - name: ビデオコンテンツタイプの概要
+      url: /get-started/overview-video-content-types.html
+    - name: 最初の動画のアップロードと公開
+      url: /get-started/uploading-publishing-your-first-video.html
+- section: 
+  name: 動画を管理する
+  url: /videos/index.html
+  docs:
+    - name: テキストトラックの追加
+      url: /videos/adding-text-tracks-to-a-video.html
+    - name: ポスターとサムネイル画像のキャプチャ
+      url: /videos/capturing-poster-and-thumbnail-images.html
+    - name: 電子メールによるビデオビューの促進
+      url: /videos/driving-video-views-email.html
+    - name: ビデオプロパティの編集
+      url: /videos/editing-video-properties.html
+    - name: 動画を管理する
+      url: /videos/managing-videos.html
+    - name: 動画を公開する
+      url: /videos/publishing-videos.html
+    - name: 動画を検索する
+      url: /videos/how-to-search-for-videos.html
+    - name: ポスターとサムネイル画像のアップロード
+      url: /videos/uploading-poster-and-thumbnail-images.html
+    - name: 動画をアップロードする
+      url: /videos/uploading-videos.html
+    - name: 共有ビデオの操作
+      url: /videos/working-with-shared-videos.html
+- section: 
+  name: ダッシュボードの確認
+  url: /dashboard/index.html
+  docs:
+    - name: ダッシュボードの概要
+      url: /dashboard/dashboard-overview.html
+    - name: 詳細ダッシュボードの確認
+      url: /dashboard/reviewing-adv-dashboard.html
+    - name: 基本ダッシュボードの確認
+      url: /dashboard/reviewing-basic-dashboard.html
+- section: 
+  name: アナリティクスの確認
+  url: /analytics/index.html
+  docs:
+    - name: 動画のベンチマークスコアの計算方法
+      url: /analytics/how-vbs-calculated.html
+    - name: ビデオ分析のレビュー
+      url: /analytics/reviewing-video-analytics.html
+    - name: ヘッドアップディスプレイ Chrome 拡張機能を使用する
+      url: /analytics/using-hud.html
+- section: 
+  name: アカウントの管理
+  url: /admin/index.html
+  docs:
+    - name: アドビアナリティクスの設定
+      url: /admin/configuring-adobe-analytics-event-tracking.html
+    - name: グーグルアナリティクスの設定
+      url: /admin/configuring-google-analytics-event-tracking.html
+    - name: MAP 接続の設定
+      url: /admin/configuring-map-connections.html
+    - name: HubSpot（クライアントサイド API）への接続
+      url: /admin/connecting-to-hubspot-client-side-api.html
+    - name: ハブスポット (REST API) に接続する
+      url: /admin/connecting-to-hubspot-rest-api.html
+    - name: マルケト（マンチキン）に接続中
+      url: /admin/connecting-to-marketo-munchkin.html
+    - name: MarketO (REST API) に接続する
+      url: /admin/connecting-to-marketo-rest-api.html
+    - name: Oracle Eloquaに接続中
+      url: /admin/connecting-to-oracle-eloqua.html
+    - name: Salesforce に接続中
+      url: /admin/connecting-to-salesforce.html
+    - name: Pardot の Salesforce オブジェクトの作成
+      url: /admin/creating-salesforce-object-pardot.html
+    - name: リードフォームの作成
+      url: /admin/creating-lead-forms.html
+    - name: HubSpot でのリードフォームの作成
+      url: /admin/creating-lead-forms-hubspot.html
+    - name: マルケトでのリードフォームの作成
+      url: /admin/creating-lead-forms-marketo.html
+    - name: Oracle Eloquaでのリードフォームの作成
+      url: /admin/creating-lead-forms-oracle-eloqua.html
+    - name: Salesforce でのリードフォームの作成
+      url: /admin/creating-lead-forms-salesforce.html
+    - name: アカウント情報の管理
+      url: /admin/managing-account-information.html
+    - name: アカウント設定の管理
+      url: /admin/managing-account-settings.html
+    - name: メディア共有設定の管理
+      url: /admin/managing-media-sharing-settings.html
+    - name: プロファイル情報の管理
+      url: /admin/managing-profile-information.html
+    - name: ユーザーの管理
+      url: /admin/managing-users.html
+    - name: プレーヤーのスタイリング
+      url: /admin/styling-players.html
+    - name: Google アナリティクスでのプレイヤーのイベントデータの確認
+      url: /admin/reviewing-player-event-data-in-google-analytics.html
+    - name: 請求情報の表示
+      url: /admin/viewing-billing-information.html
+- section: 
+  name: リリースノート
+  url: /release-notes/index.html
+  docs:
+    - name: ブライトコーブCampaignリリースノート
+      url: /release-notes/campaign-release-notes.html
+- section: 
+  name: サポート
+  url: /support/index.html
+  docs:
+    - name: 'ブライトコーブのシステムステータスページの表示'
+      url: '/support/viewing-brightcove-system-status-page.html'
+    - name: '営業へのお問い合わせ'
+      url: '/support/contact-sales.html'
+    - name: 'サポートケースを開く'
+      url: '/support/opening-case-with-brightcove-support.html'
+    - name: 'サポートポータルのパスワードをリセットする'
+      url: '/support/reset-support-portal-password.html'
+
+# TODO correct and add additional sections/pages
+# TODO note that the order of items here determines the order in navigation
+# TODO indentation in YAML is crucial and must be with spaces (not tabs!)

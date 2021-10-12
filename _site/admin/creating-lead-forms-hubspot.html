@@ -1,16 +1,17 @@
-﻿<!doctype html>
-<html lang="ja">
+<!doctype html>
+<html lang="en-us">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
+  <meta name="description" content="In this topic you will learn how to create a HubSpot form that can be used to capture lead data during video playback.">
   
   <title>HubSpot でのリードフォームの作成</title>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">    <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&amp;display=swap">
+  <link rel="manifest" href="/site.webmanifest">  <link rel="preconnect" href="https://fonts.gstatic.com"> 
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/prism.css">
@@ -18,378 +19,234 @@
   <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/landing-page.css">
   <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/tabs.css">
   <link rel="stylesheet" href="/assets/css/local.css">
-  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&display=swap">
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/381443caa8.js" crossorigin="anonymous"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/google-analytics.js"></script>
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2728311-17"></script>
+<script>
+  window.DataLayer = window.DataLayer || []; 関数{dataLayer.push(arguments);} gtag ('js', new Date ()); gtag ('config', 'UA-2728311-17');
+</script>
   <script src="/assets/js/sajari-head.js"></script>
+	<script src="https://unpkg.com/feather-icons"></script>
 </head>
 
 <body class="body">
-
-<header>
+ <header>
   <div class="div-header">
-    <a href="/"><span class="product-logo" style="font-family:'Balto Web','Public Sans';font-size:2em;font-weight:bold;">BRIGHTCOVE CAMPAIGN<sup>™</sup></span></a>
+    <a href="/"><img class="product-logo" src="https://support.brightcove.com/site-assets/images/site/product-logos/SVG/campaign-logo.svg" alt="Brightcove"></a>
 <!-- GTranslate: https://gtranslate.io/ -->
-<select onchange="doGTranslate(this);"><option value="">言語の選択</option><option value="en|en" translate="No">English</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">Français</option><option value="en|de" translate="No">Deutsche</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">Español</option></select>
+<select onchange="doGTranslate(this);"><option value="">言語を選択</option><option value="en|en" translate="No">英語</option><option value="en|zh-TW" translate="No">組織中文</option><option value="en|fr" translate="No">フランセ</option><option value="en|de" translate="No">ドイチェ</option><option value="en|ja" translate="No">日本語は</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">エスパニョール</option></select>
 
 <script>
-/* <![CDATA[ */
-function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;}
-/* ]]> */
+/*<![CDATA[ */ 関数 dogTranslate (lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;} /*]]> */
 </script>
 
 
 
-    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><img src="https://support.brightcove.com/site-assets/images/site/support.png" alt="サポート"/> サポートへのお問い合わせ</a> <span style="vertical-align: top;margin-left:1em;margin-right:1em;">|</span> <a href="https://status.brightcove.com/"><img src="https://support.brightcove.com/site-assets/images/site/status.png" alt="システムステータス"/> システムステータス</a></span> <br/>
+    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><i data-feather="help-circle"></i> サポートに連絡する</a><span style="vertical-align: middle;margin-left:1em;margin-right:1em;">| </span><a href="https://status.brightcove.com/"><i data-feather="cloud"></i> システムステータス</a></span>
+    <br>
     
   </div>
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb arr-right">
       
-      <li class="breadcrumb-item"><a href="/">ホーム</a></li>
-      
-      
-      
-      <li class="breadcrumb-item"><a href="/admin/">アカウントの管理</a></li>
+      <li class="breadcrumb-item first-item"><a href="/">ホーム</a></li>
+        
+      <li class="breadcrumb-item"><a href="/admin/">Administering Accounts</a></li>
       
       <li class="breadcrumb-item active" aria-current="page">HubSpot でのリードフォームの作成</li>
     </ol>
   </nav>
-</header>
-<div class="container">
+</header> <div class="container">
     <div class="row">
-            <div class="col-sm-3 left-side-bar">
-        <select id="site_select" class="bcls-select" style="margin-right: 1rem;">
-          <option value="">Brightcove のその他のドキュメント</option>
-          
-            
-              <option value="https://support.brightcove.com">ドキュメントホーム</option>
-            
-          
-            
-              <option value="https://audience.support.brightcove.com">Brightcove Audience</option>
-            
-          
-            
-              <option value="https://beacon.support.brightcove.com">Brightcove ビーコン</option>
-            
-          
-            
-              <option value="https://campaign.support.brightcove.com">Brightcove キャンペーン</option>
-            
-          
-            
-              <option value="https://engage.support.brightcove.com">Brightcove Engage</option>
-            
-          
-            
-              <option value="https://live.support.brightcove.com">Brightcove ・ライブ</option>
-            
-          
-            
-              <option value="https://gallery.support.brightcove.com">Brightcove ギャラリー</option>
-            
-          
-            
-              <option value="https://ssai.support.brightcove.com">Brightcove SSAI</option>
-            
-          
-            
-              <option value="https://social.support.brightcove.com">Brightcove ソーシャル</option>
-            
-          
-            
-              <option value="https://studio.support.brightcove.com">Video Cloud Studio</option>
-            
-          
-            
-              <option value="https://player.support.brightcove.com">Brightcove のプレーヤー開発</option>
-            
-          
-            
-              <option value="https://apis.support.brightcove.com">Video CloudプラットフォームAPI</option>
-            
-          
-            
-              <option value="https://sdks.support.brightcove.com">ビデオクラウドデバイス SDK</option>
-            
-          
-            
-              <option value="https://integrations.support.brightcove.com">統合および CMS コネクタ</option>
-            
-          
-            
-              <option value="https://general.support.brightcove.com">ビデオクラウドの一般情報</option>
-            
-          
-            
-              <option value="https://zencoder.support.brightcove.com">Zencoder</option>
-            
-          
-        </select>
-
+      <div class="col-sm-3 left-side-bar">
+				<select id="site_select" class="bcls-select" style="margin-left: 1rem;">
+					<option value="">ブライトコーブのその他のドキュメント</option>
+					 
+							<option value="https://support.brightcove.com">ドキュメンテーションホーム</option>
+						  
+							<option value="">-ビデオクラウド-</option>
+						  
+							<option value="https://studio.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドスタジオ</option>
+						  
+							<option value="https://player.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブプレイヤー開発</option>
+						  
+							<option value="https://apis.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドプラットフォームAPI</option>
+						  
+							<option value="https://sdks.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドデバイスSDK</option>
+						  
+							<option value="https://integrations.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;統合とCMSコネクタ</option>
+						  
+							<option value="https://general.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドの一般情報</option>
+						  
+							<option value="">-ビデオエッセンシャル-</option>
+						  
+							<option value="https://beacon.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブビーコン</option>
+						  
+							<option value="https://live.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブライブ</option>
+						  
+							<option value="https://zencoder.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp; Zencoder</option>
+						  
+							<option value="">-ビデオクラウドアドオン-</option>
+						  
+							<option value="https://campaign.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブCampaign</option>
+						  
+							<option value="https://engage.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブエンゲージ</option>
+						  
+							<option value="https://gallery.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブギャラリー</option>
+						  
+							<option value="https://studio.support.brightcove.com/social/index.html">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブソーシャル</option>
+						  
+							<option value="https://ssai.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブSSAI</option>
+						 
+				</select>
         <nav class="sidenav" id="side_nav">
-          
-            
+           
             <h5><a href="/index.html">ホーム</a></h5>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/get-started/index.html">はじめに<strong> + </strong></a></h5>
+              
+              <h5 class="submenu-header"><a href="/get-started/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;はじめに</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/get-started/brightcove-campaign-training-videos.html">キャンペーンのトレーニングビデオ</a></li>
-                  
-                
-                  
-                    <li><a href="/get-started/getting-started-brightcove-campaign.html">Brightcove キャンペーンを始める</a></li>
-                  
-                
-                  
-                    <li><a href="/get-started/getting-started-brightcove-campaign-trial.html">Brightcove のキャンペーントライアルの開始</a></li>
-                  
-                
-                  
-                    <li><a href="/get-started/overview-video-content-types.html">ビデオコンテンツタイプの概要</a></li>
-                  
-                
-                  
-                    <li><a href="/get-started/uploading-publishing-your-first-video.html">最初の動画のアップロードと公開</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/videos/index.html">ビデオの管理<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/videos/adding-text-tracks-to-a-video.html">テキストトラックの追加</a></li>
-                  
-                
-                  
-                    <li><a href="/videos/capturing-poster-and-thumbnail-images.html">ポスターとサムネイル画像のキャプチャ</a></li>
-                  
-                
-                  
-                    <li><a href="/videos/driving-video-views-email.html">電子メールによるビデオビューの促進</a></li>
-                  
-                
-                  
-                    <li><a href="/videos/editing-video-properties.html">ビデオプロパティの編集</a></li>
-                  
-                
-                  
-                    <li><a href="/videos/managing-videos.html">ビデオを管理する</a></li>
-                  
-                
-                  
-                    <li><a href="/videos/publishing-videos.html">ビデオの公開</a></li>
-                  
-                
-                  
-                    <li><a href="/videos/how-to-search-for-videos.html">動画の検索</a></li>
-                  
-                
-                  
-                    <li><a href="/videos/uploading-poster-and-thumbnail-images.html">ポスターとサムネイル画像のアップロード</a></li>
-                  
-                
-                  
-                    <li><a href="/videos/uploading-videos.html">動画をアップロード中</a></li>
-                  
-                
-                  
-                    <li><a href="/videos/working-with-shared-videos.html">共有ビデオの操作</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/dashboard/index.html">ダッシュボードの確認<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/dashboard/dashboard-overview.html">ダッシュボードの概要</a></li>
-                  
-                
-                  
-                    <li><a href="/dashboard/reviewing-adv-dashboard.html">詳細ダッシュボードの確認</a></li>
-                  
-                
-                  
-                    <li><a href="/dashboard/reviewing-basic-dashboard.html">基本ダッシュボードの確認</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/analytics/index.html">アナリティクスの確認<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/analytics/how-vbs-calculated.html">動画のベンチマークスコアの計算方法</a></li>
-                  
-                
-                  
-                    <li><a href="/analytics/reviewing-video-analytics.html">動画分析の確認</a></li>
-                  
-                
-                  
-                    <li><a href="/analytics/using-hud.html">ヘッドアップディスプレイ Chrome 拡張機能を使用する</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/admin/index.html">アカウントの管理<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/admin/configuring-adobe-analytics-event-tracking.html">アドビアナリティクスの設定</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/configuring-google-analytics-event-tracking.html">グーグルアナリティクスの設定</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/configuring-map-connections.html">MAP 接続の設定</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/connecting-to-hubspot-client-side-api.html">HubSpot（クライアントサイド API）への接続</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/connecting-to-hubspot-rest-api.html">ハブスポット (REST API) に接続する</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/connecting-to-marketo-munchkin.html">マルケト（マンチキン）に接続中</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/connecting-to-marketo-rest-api.html">マルケト (REST API) に接続する</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/connecting-to-oracle-eloqua.html">Oracle Eloquaに接続中</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/connecting-to-salesforce.html">Salesforce に接続中</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/creating-salesforce-object-pardot.html">Pardot 用の Salesforce オブジェクトの作成</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/creating-lead-forms.html">リードフォームの作成</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/creating-lead-forms-hubspot.html">HubSpot でのリードフォームの作成</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/creating-lead-forms-marketo.html">マルケトでのリードフォームの作成</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/creating-lead-forms-oracle-eloqua.html">Oracle Eloquaでのリードフォームの作成</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/creating-lead-forms-salesforce.html">Salesforce でのリードフォームの作成</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/managing-account-information.html">アカウント情報の管理</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/managing-account-settings.html">アカウント設定の管理</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/managing-media-sharing-settings.html">メディア共有設定の管理</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/managing-profile-information.html">プロファイル情報の管理</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/managing-users.html">ユーザーの管理</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/styling-players.html">プレーヤーのスタイリング</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/reviewing-player-event-data-in-google-analytics.html">Google アナリティクスでのプレイヤーのイベントデータの確認</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/viewing-billing-information.html">請求情報の表示</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/release-notes/index.html">リリースノート<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/release-notes/2020.html">2020年</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/support/index.html"><strong>サポート+ </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
+                 
+                    <li><a href="/get-started/brightcove-campaign-training-videos.html">Campaignトレーニングビデオ</a></li>
                     
-                  
-                
-                  
-                    <li><a href="/support/viewing-brightcove-system-status-page.html">Brightcove のシステムステータスページの表示</a></li>
-                  
-                
-                  
-                    <li><a href="/support/contact-sales.html">営業へのお問い合わせ</a></li>
-                  
-                
-                  
-                    <li><a href="/support/opening-case-with-brightcove-support.html">サポートケースを開く</a></li>
-                  
-                
+                    <li><a href="/get-started/getting-started-brightcove-campaign.html">ブライトコーブCampaignを始めて</a></li>
+                    
+                    <li><a href="/get-started/getting-started-brightcove-campaign-trial.html">ブライトコーブCampaignのトライアルを始めよう</a></li>
+                    
+                    <li><a href="/get-started/overview-video-content-types.html">ビデオコンテンツタイプの概要</a></li>
+                    
+                    <li><a href="/get-started/uploading-publishing-your-first-video.html">最初の動画のアップロードと公開</a></li>
+                   
               </ul>
-            
-          
+              
+              <h5 class="submenu-header"><a href="/videos/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;動画を管理する</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/videos/adding-text-tracks-to-a-video.html">テキストトラックの追加</a></li>
+                    
+                    <li><a href="/videos/capturing-poster-and-thumbnail-images.html">ポスターとサムネイル画像のキャプチャ</a></li>
+                    
+                    <li><a href="/videos/driving-video-views-email.html">電子メールによるビデオビューの促進</a></li>
+                    
+                    <li><a href="/videos/editing-video-properties.html">ビデオプロパティの編集</a></li>
+                    
+                    <li><a href="/videos/managing-videos.html">動画を管理する</a></li>
+                    
+                    <li><a href="/videos/publishing-videos.html">動画を公開する</a></li>
+                    
+                    <li><a href="/videos/how-to-search-for-videos.html">動画を検索する</a></li>
+                    
+                    <li><a href="/videos/uploading-poster-and-thumbnail-images.html">ポスターとサムネイル画像のアップロード</a></li>
+                    
+                    <li><a href="/videos/uploading-videos.html">動画をアップロードする</a></li>
+                    
+                    <li><a href="/videos/working-with-shared-videos.html">共有ビデオの操作</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/dashboard/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;ダッシュボードの確認</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/dashboard/dashboard-overview.html">ダッシュボードの概要</a></li>
+                    
+                    <li><a href="/dashboard/reviewing-adv-dashboard.html">詳細ダッシュボードの確認</a></li>
+                    
+                    <li><a href="/dashboard/reviewing-basic-dashboard.html">基本ダッシュボードの確認</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/analytics/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;アナリティクスの確認</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/analytics/how-vbs-calculated.html">動画のベンチマークスコアの計算方法</a></li>
+                    
+                    <li><a href="/analytics/reviewing-video-analytics.html">ビデオ分析のレビュー</a></li>
+                    
+                    <li><a href="/analytics/using-hud.html">ヘッドアップディスプレイ Chrome 拡張機能を使用する</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/admin/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;アカウントの管理</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/admin/configuring-adobe-analytics-event-tracking.html">アドビアナリティクスの設定</a></li>
+                    
+                    <li><a href="/admin/configuring-google-analytics-event-tracking.html">グーグルアナリティクスの設定</a></li>
+                    
+                    <li><a href="/admin/configuring-map-connections.html">MAP 接続の設定</a></li>
+                    
+                    <li><a href="/admin/connecting-to-hubspot-client-side-api.html">HubSpot（クライアントサイド API）への接続</a></li>
+                    
+                    <li><a href="/admin/connecting-to-hubspot-rest-api.html">ハブスポット (REST API) に接続する</a></li>
+                    
+                    <li><a href="/admin/connecting-to-marketo-munchkin.html">マルケト（マンチキン）に接続中</a></li>
+                    
+                    <li><a href="/admin/connecting-to-marketo-rest-api.html">MarketO (REST API) に接続する</a></li>
+                    
+                    <li><a href="/admin/connecting-to-oracle-eloqua.html">Oracle Eloquaに接続中</a></li>
+                    
+                    <li><a href="/admin/connecting-to-salesforce.html">Salesforce に接続中</a></li>
+                    
+                    <li><a href="/admin/creating-salesforce-object-pardot.html">Pardot の Salesforce オブジェクトの作成</a></li>
+                    
+                    <li><a href="/admin/creating-lead-forms.html">リードフォームの作成</a></li>
+                    
+                    <li><a href="/admin/creating-lead-forms-hubspot.html">HubSpot でのリードフォームの作成</a></li>
+                    
+                    <li><a href="/admin/creating-lead-forms-marketo.html">マルケトでのリードフォームの作成</a></li>
+                    
+                    <li><a href="/admin/creating-lead-forms-oracle-eloqua.html">Oracle Eloquaでのリードフォームの作成</a></li>
+                    
+                    <li><a href="/admin/creating-lead-forms-salesforce.html">Salesforce でのリードフォームの作成</a></li>
+                    
+                    <li><a href="/admin/managing-account-information.html">アカウント情報の管理</a></li>
+                    
+                    <li><a href="/admin/managing-account-settings.html">アカウント設定の管理</a></li>
+                    
+                    <li><a href="/admin/managing-media-sharing-settings.html">メディア共有設定の管理</a></li>
+                    
+                    <li><a href="/admin/managing-profile-information.html">プロファイル情報の管理</a></li>
+                    
+                    <li><a href="/admin/managing-users.html">ユーザーの管理</a></li>
+                    
+                    <li><a href="/admin/styling-players.html">プレーヤーのスタイリング</a></li>
+                    
+                    <li><a href="/admin/reviewing-player-event-data-in-google-analytics.html">Google アナリティクスでのプレイヤーのイベントデータの確認</a></li>
+                    
+                    <li><a href="/admin/viewing-billing-information.html">請求情報の表示</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/release-notes/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;リリースノート</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/release-notes/campaign-release-notes.html">ブライトコーブCampaignリリースノート</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/support/index.html"><span style="color:#8E9093">+</span>&nbsp;&nbsp;サポート</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/support/viewing-brightcove-system-status-page.html">ブライトコーブのシステムステータスページの表示</a></li>
+                    
+                    <li><a href="/support/contact-sales.html">営業へのお問い合わせ</a></li>
+                    
+                    <li><a href="/support/opening-case-with-brightcove-support.html">サポートケースを開く</a></li>
+                    
+                    <li><a href="/support/reset-support-portal-password.html">サポートポータルのパスワードをリセットする</a></li>
+                   
+              </ul>
+             
       </nav>
     </div>
     <div class="col-lg-7" style="background-color: white;color: #333333;margin-top: -1em;margin-bottom: -1em;padding-bottom:1em;">
   <!-- bootstrap layout -->
-
-<p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="ナビゲーションメニュー"/></p>
+ <p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="Navigation Menu"></p>
 <ul id="in_prod_nav" class="pager" style="display: none;">
-  <li><a href="#"><img src="/assets/images/feather/chevron-left.svg" alt="戻ります"/></a></li>
+  <li><a href="#"><img src="/assets/images/feather/chevron-left.svg" alt="back"></a></li>
   <li>&nbsp;&nbsp;&nbsp;&nbsp;ビーコンのドキュメント&nbsp;&nbsp;&nbsp;&nbsp;</li>
-  <li><a href="#"><img src="/assets/images/feather/chevron-right.svg" alt="前方へ進む"/></a></li>
+  <li><a href="#"><img src="/assets/images/feather/chevron-right.svg" alt="forward"></a></li>
 </ul>
 
 <!-- search bar -->
@@ -401,53 +258,45 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   <ul id="centered_in_page_toc" class="list-none"></ul>
 </details>
 <!-- open in new tab/window -->
-<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="新しいタブで開く" style="margin-top:4em;"/></a>
-
-
-
-  
-    
-
-
-<article class="bcls-article">
+<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="open in new tab" style="margin-top:4em;"></a>  <article class="bcls-article">
   <h1>HubSpot でのリードフォームの作成</h1>
-  <summary>このトピックでは、ビデオの再生中にリードデータをキャプチャするために使用できる HubSpot フォームを作成する方法について説明します。</summary>
+  <summary>In this topic you will learn how to create a HubSpot form that can be used to capture lead data during video playback.</summary>
   <section class="bcls-section">
-    <p>Brightcove Campaign には、動画の再生中に視聴者の情報をキャプチャできるリードフォームを作成できます。フォームを使用すると、必要なフィールド (表示または非表示) を含めることができます。また、プログレッシブプロファイリング (利用可能な場合) などの機能を活用することもできます。リードデータは HubSpot に送信され、HubSpot によって処理されます。 </p>
+    <p>Brightcove Campaign には、ビデオ再生中に視聴者情報をキャプチャできるリードフォームを作成できます。フォームには、必要なフィールド（表示または非表示）を含めることができます。また、プログレッシブプロファイリング（使用可能な場合）などの機能を活用できます。リードデータは HubSpot に送信され、HubSpot によって処理されます。 </p>
   </section>
   <section class="bcls-section">
     <h2 id="form">HubSpot でフォームを作成する</h2>
-    <p>HubSpot には、閲覧者の情報をキャプチャするために使用できるフォームを作成できます。生成されたフォーム HTML は、Brightcove キャンペーン内でリードフォームを作成するときに使用されます。取り込んだデータは、将来のコミュニケーションをカスタマイズする際に使用できます。下の手順では、姓、名、電子メールアドレスを取り込む簡単なフォームを作成します。HubSpot フォームの詳細については、<a href="https://knowledge.hubspot.com/landing-page-user-guide-v2/how-to-create-a-form-for-your-landing-page"> HubSpot のドキュメントを参照してください</a>。</p>
+    <p>HubSpot には、閲覧者の情報をキャプチャするために使用できるフォームを作成できます。生成されたフォーム HTML は、Brightcove Campaign 内でリードフォームを作成するときに使用されます。キャプチャされたデータは、今後の通信のカスタマイズに使用できます。以下の手順では、名、姓、メールアドレスをキャプチャするための簡単なフォームを作成します。HubSpot フォームの詳細については、<a href="https://knowledge.hubspot.com/landing-page-user-guide-v2/how-to-create-a-form-for-your-landing-page">  HubSpot のドキュメントを参照してください</a>。</p>
     <ol class="bcls-tasklist-restart">
-      <li>HubSpot アカウントにサインインします。</li>
-      <li>[ <strong> &gt; マーケティングフォーム</strong> ] をクリックします。クラシックメニューを使用している場合は、<strong>連絡先</strong>&gt;<strong>ォーム</strong>をクリックします。</li>
-      <li>[ <strong>フォームの作成</strong> ] をクリックします。既定では、フォームには [ <strong>電子メール</strong> ] フィールドと [ <strong>送信</strong> ] ボタンが含まれます。</li>
-      <li>[ <strong>標準フォーム</strong> ] タイプが選択されていることを確認します。[<strong>Next</strong>]をクリックします。</li>
-      <li>[ <strong>空白のテンプレート</strong> ] が選択されていることを確認します。[ <strong>スタート</strong> ] をクリックします。</li>
+      <li>HubSpot アカウントにログインします。</li>
+      <li><strong>マーケティング &gt; フォームをクリックします</strong>。クラシックメニューを使用している場合は、[ <strong>連絡先] </strong>  &gt; [ <strong>フォーム] をクリックします</strong>。</li>
+      <li>[ <strong>フォームの作成] をクリックします</strong>。デフォルトでは、フォームには<strong>Eメール</strong>フィールドと<strong>参加する</strong>ボタン。</li>
+      <li>[ <strong>標準フォーム] </strong>タイプが選択されていることを確認します。[ <strong>次へ] をクリックします</strong>。</li>
+      <li>[ <strong>空白のテンプレート] </strong>が選択されていることを確認します。[ <strong>スタート] をクリックします</strong>。</li>
       <li>ヘッダーの既定の名前をクリックし、フォームの名前を指定します。<strong>Enter </strong>キーを押して、変更を保存します。
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="ハブスポットフォーム名" src="/assets/images/admin/hubspot-name-form.png"/></figure>
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="hubspot form name" src="/assets/images/admin/hubspot-name-form.png" /></figure>
       </li>
       <li>ページの左側には、フォームに追加できるフィールドのリストが含まれています。フォーム上の目的の [ <strong>名</strong><strong>] フィールドと [姓</strong> ] フィールドをページの右側にドラッグアンドドロップします。
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="ハブスポットフォームフィールド" src="/assets/images/admin/hubspot-drag-field.png"/></figure>
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="hubspot form fields" src="/assets/images/admin/hubspot-drag-field.png" /></figure>
       </li>
       <li>フィールドを必須にするには、そのフィールドにカーソルを合わせて、<strong>その他アイコン [&gt; 必須にする</strong> ] をクリックします。必須フィールドには、フィールドラベルの横に「*」が表示されます。
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="ハブスポットフォームフィールドが必要です" src="/assets/images/admin/hubspot-req-field.png"/></figure>
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="hubspot form field required" src="/assets/images/admin/hubspot-req-field.png" /></figure>
       </li>
       <li>ページの上部にある [ <strong>オプション</strong> ] リンクをクリックします。</li>
-      <li>[ <strong>訪問者がこのフォームを送信した後にどうなるか</strong> ] で、[ <strong>ありがとうメッセージを表示する</strong> ] をクリックします。デフォルトのメッセージは表示されないので、そのままにします。
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="ハブスポットフォームメッセージ" src="/assets/images/admin/hubspot-submit-form-options.png"/></figure>
+      <li>[ <strong>訪問者がこのフォームを送信した後にどうなるか] </strong>で、[ <strong>ありがとうメッセージを表示する] をクリックします</strong>。デフォルトのメッセージは表示されないので、そのままにします。
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="hubspot form message" src="/assets/images/admin/hubspot-submit-form-options.png" /></figure>
       </li>
-      <li>ページ上部にある [ <strong>スタイルとプレビュー</strong> ] リンクをクリックします。デフォルトでは、<strong>デスクトッププレビューが表示されます</strong>。</li>
-      <li>ページ上部の [ <strong>発行</strong> ] をクリックして、フォームに変更を発行します。</li>
+      <li>ページ上部にある [ <strong>スタイルとプレビュー</strong> ] リンクをクリックします。デフォルトでは、<strong></strong>デスクトッププレビューが表示されます。</li>
+      <li>クリック<strong>公開する</strong>ページの上部にあるフォームへの変更を公開します。</li>
     </ol>
   </section>
   <section class="bcls-section">
     <h2 id="edit">フォームの埋め込みコードのコピーと編集</h2>
-    <p>Brightcove Campaign 内でフォームを使用するには、フォームの埋め込みコードをコピーして編集する必要があります。また、フォームに基本的なスタイリングを行うこともできます。以下の手順では、フォーム埋め込みコードを HTML エディターにコピーし、フォームにいくつかのスタイル変更を行います。</p>
+    <p>Brightcove Campaign 内でフォームを使用するには、フォームの埋め込みコードをコピーして編集する必要があります。また、フォームに基本的なスタイルを設定することもできます。以下の手順では、フォーム埋め込みコードを HTML エディターにコピーし、フォームにいくつかのスタイル変更を行います。</p>
     <ol class="bcls-tasklist-restart">
-      <li>ページの右上にある [ <strong>共有</strong> ] をクリックします。</li>
-      <li> <strong>[ <strong>コードを埋め込む</strong> ] をクリックし、[コピー] をクリックして、埋め込みコードをクリップボードにコピーします。</strong>
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="ハブスポットフォームの埋め込みコード" src="/assets/images/admin/hubspot-copy-form-embed.png"/></figure>
+      <li>クリック<strong>シェア</strong>ページの右上にあります。</li>
+      <li> クリック<strong>埋め込みコード</strong>その後<strong>コピー</strong>埋め込みコードをクリップボードにコピーします。
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="hubspot form embed code" src="/assets/images/admin/hubspot-copy-form-embed.png" /></figure>
       </li>
       <li>任意の HTML エディタに埋め込みコードを貼り付けます。</li>
       <li>埋め込みコードには小さな変更が必要なため、Brightcove Campaign は送信時にフォームを閉じる必要があります。<strong><code translate="No"> formId:</code></strong>行の最後にカンマを追加している行を見つけます。</li>
@@ -455,7 +304,8 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
         <pre>
 <code translate="No">onFormSubmit: bcLeadForm.submit</code></pre>
       </li>
-      <li>デフォルトでは、フォームが Brightcove Player 内に表示される場合、フォームはプレーヤーの上に透明な背景に表示されます。埋め込みコードに次の CSS を追加して、背景色を灰色に変更します。<br/><code translate="No">&lt;style&gt;<br />
+      <li>デフォルトでは、フォームが Brightcove Player 内に表示される場合、フォームはプレーヤーの上に透明な背景に表示されます。次のCSSを埋め込みコードに追加して、背景色を灰色に変更します。<br />
+        <code translate="No">&lt;style&gt;<br />
         body {<br />
         background-color: rgba(204,204,204,0.9);<br />
         margin: 0;<br />
@@ -470,18 +320,16 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     <p>カスタムリードフォームを使用してキャプチャされたリードは、HubSpot アカウントの連絡先として追加されます。リードフォームによってキャプチャされたデータを表示する簡単な方法は、HubSpotでスマート・リストを作成することです。</p>
     <ol class="bcls-tasklist-restart">
       <li>HubSpot アカウントにサインインします。</li>
-      <li><strong>マーケティング</strong><strong>&gt;フォーム</strong>をクリックします。</li>
-      <li>フォームをマウスオーバーすると、<strong>アクションメニューが表示されます</strong>。[ <strong>アクション] [&gt; 送信の表示</strong> ] をクリックします。フォーム送信のリストが表示されます。
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="ハブスポットリード" src="/assets/images/admin/hubspot-form-submissions.png"/></figure>
+      <li><strong>マーケティング</strong><strong>   &gt; フォームをクリックします</strong>。</li>
+      <li>フォームをマウスオーバーすると、<strong></strong>アクションメニューが表示されます。[ <strong>アクション] &gt; [送信の表示] の順にクリックします</strong>。フォーム送信のリストが表示されます。
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="hubspot leads" src="/assets/images/admin/hubspot-form-submissions.png" /></figure>
       </li>
-      <li>行にマウスオーバーしたら、[送信の表示] をクリックして、フォームデータを表示します。
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="ハブスポットリードの詳細" src="/assets/images/admin/hubspot-submission-details.png"/></figure>
+      <li>行をマウスオーバーしたら、[ <strong></strong>送信の表示] をクリックしてフォームデータを表示します。
+<figure class="bcls-figure"><img class="bcls-image--no-border" alt="hubspot lead details" src="/assets/images/admin/hubspot-submission-details.png" /></figure>
       </li>
     </ol>
   </section>
-</article>
-
-<!-- complete bootstrap layout -->
+</article> <!-- complete bootstrap layout -->
     </div>
     <div class="col-sm-2 right-side-bar">
       
@@ -495,11 +343,18 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
 </div>
 
 <hr>
-<footer class="bcls-footer" role="contentinfo">  <div class="row">
+<div class="last-updated">
+  ページの最終更新日21 May 2021
+</div>
+
+
+ <footer class="bcls-footer" role="contentinfo">
+  <div class="row">
     <div class="region region-footer-top-center col-md-12">
       <nav role="navigation" aria-labelledby="block-brightcovesupport-menu" id="block-brightcovesupport" class="footer-menu">
+        <img src="https://support.brightcove.com/site-assets/images/site/SVG/COVE004_Brightcove_Logo_093020_RGB_KO.svg" class="bc-footer-logo" alt="Brightcove">
 
-        <h2>Brightcove サポート</h2>
+        <h2>ブライトコーブのサポート</h2>
 
         <ul class="menu">
           <li>
@@ -526,14 +381,14 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
             <a href="https://studio.support.brightcove.com/training/register-training.html">コースに登録する</a>
           </li>
           <li>
-            <a href="https://university.brightcove.com/">Brightcove University</a>
+            <a href="https://university.brightcove.com/">ブライトコーブ大学</a>
           </li>
         </ul>
 
       </nav>
       <nav role="navigation" aria-labelledby="block-brightcove-menu" class="footer-menu">
 
-        <h2>Brightcove</h2>
+        <h2>ブライトコーブ</h2>
 
         <ul class="menu">
           <li>
@@ -552,12 +407,12 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
         <table>
           <tr>
             <td>
-              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> Brightcove Inc. All rights reserved.</div>
+              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> ブライトコーブ株式会社すべての権利を保有しています。</div>
             </td>
             <td><a href="https://www.brightcove.com/en/legal/privacy">プライバシー</a> | <a href="https://www.brightcove.com/en/terms-and-conditions">利用規約</a></td>
             <td>
               <div class="gf-links-cols footer-menu">
-                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin"><i class="fab fa-linkedin-in" style="font-size: 1.5rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter"><i class="fab fa-twitter" style="font-size: 1.5rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i class="fab fa-facebook-f" style="font-size: 1.5rem;"></i></a>
+                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin" style="margin-right: 1rem;"><i data-feather="linkedin" style="color:#8E9093;height: 1.25rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter" style="margin-right: 1rem;"><i data-feather="twitter" style="color:#8E9093;height: 1.25rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i data-feather="facebook" style="color:#8E9093;height: 1.25rem;"></i></a>
                 </div>
               </div>
             </td>
@@ -568,7 +423,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   </div>
 </footer>
 
-<script>
+<script translate="no">
       
   var searchBox = sajari.init({
     mode: "search-box",
@@ -585,8 +440,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     });
   
 
-</script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" crossorigin="anonymous"></script>
+</script>   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="https://support.brightcove.com/site-assets/js/site/https-fix.js"></script>
@@ -604,34 +458,14 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   
   <script src="/assets/js/sajari-search-foot.js"></script>
   
+	<script>
+  feather.replace ()
+	</script>
   <!-- <script src="/assets/js/sajari-index.js"></script> -->
   <style>
-    a.sj-paginator__page-number.sj-paginator__page-number--current.css-so0ov7 {
-      background-color: lightblue;
-    }
-    div.sj-tabs__tab {
-      margin-top: 3rem;
-      margin-left: .3rem;
-      border-top-left-radius: .4rem;
-      border-top-right-radius: .4rem;
-      background-color:#e8e8e8;
-    }
-
-    div.sj-tabs__tab.sj-tabs__tab--selected {
-      border-bottom-color: crimson;
-      background-color: #f8f8f8;
-    }
-
-    p.sj-results__result__description.css-p9jvyt {
-      font-size: 1rem;
-    }
-
-    .sj-result__text.css-31l7gp h3 {
-      color: navy;
-      font-size: 1.4rem;
-    }
+    asj-paginator__page-number.sj-paginator__page-number { background-color: lightblue; }—current.css-so0ov7 { margin-top: 3rem; margin-left: .3rem; border-top-left-radius: .4rem; border-top-right-radius: .4rem; background-color:#e8e8e8; } div.sj-tabs__tab div.sj-tabs__tab { border-bottom-color: crimson; background-color: #f8f8f8; }—選択されたp.sj-result__description.css-p9jvyt { font-size: 1rem; } .sj-result__text。css-31l7gp h3 { color: navy; font-size: 1.4rem; }
     </style>
 
 </body>
 
-</html>
+</html> 
