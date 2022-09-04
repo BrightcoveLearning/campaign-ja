@@ -31,6 +31,7 @@ description: >- # this means to ignore newlines until "baseurl:"
 # TODO change description
 site_url: "https://ja.campaign.support.brightcove.com"
 site_domain: "ja.campaign.support.brightcove.com"
+language: ja
 
 # Build settings
 # theme: minima
